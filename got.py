@@ -56,11 +56,16 @@ def getVideoURL(url,hd) :
 		if hd in to_string[i] : 
 			video_url =  to_string[i-1]
 			return video_url 
+files = os.listdir(os.curdir)
+for i in range(1,11) : 
+     if "gots6ep"+str(i)+".mp4" not in files : 
+             filename = "gots6ep"+str(i)+".mp4"
+             break
 
 res =  getVideoURL(cmdargs.u,hd).split('"')[1]
 if res != "" : 
 	print "[+] NOW Downloading :  "
-	os = os.system("youtube-dl -c "+res)
+	os = os.system("youtube-dl -c --output "+filename+" "+res)
 	if os == 0 :  
 		print "[+] Done , Happy watching :)"
 	else : 
